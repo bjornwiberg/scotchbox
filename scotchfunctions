@@ -1,0 +1,30 @@
+newsite () {
+    if [ $1 ] ; then
+        addvhost $1
+        addhost $1
+        cd ~/scotch
+        vagrant provision
+        cd ~/scotch/Sites
+        cd $1/public
+    else
+        echo "use $0 <devaddress>"
+        fi
+}
+addvhost () {
+    if [ $1 ] ; then
+        sudo sh -c "echo $1 >> ~/scotch/Domains"
+    else
+        echo "use $0 <devaddress>"
+    fi
+}
+addhost () {
+    if [ $1 ] ; then
+        sudo sh -c "echo 192.168.33.10    $1 >> /etc/hosts"
+    else
+        echo "use $0 <devaddress>"
+    fi
+}
+
+alias ippublic='pwd=`pwd` && sudo sed -i.bak s/192.168.33.10/192.168.0.5/g /etc/hosts && cd ~/scotch && vagrant halt && cp networkconfig/nw_public networkconfig/default && vagrant up --provision && cd $pwd'
+
+alias ipprivate='pwd=`pwd` && sudo sed -i.bak s/192.168.0.5/192.168.33.10/g /etc/hosts && cd ~/scotch && vagrant halt && cp networkconfig/nw_private networkconfig/default && vagrant up --provision && cd $pwd'
