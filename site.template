@@ -1,0 +1,7 @@
+<VirtualHost *:80>
+        ServerAdmin webmaster@localhost
+        ServerName site.template
+        DocumentRoot /var/www/site.template/public
+        ErrorLog /var/www/site.template/logs/error.log
+        CustomLog /var/www/site.template/logs/access.log combined
+</VirtualHost>
