@@ -5,3 +5,16 @@
         ErrorLog /var/www/site.template/logs/error.log
         CustomLog /var/www/site.template/logs/access.log combined
 </VirtualHost>
+
+<VirtualHost *:443>
+        ServerAdmin webmaster@localhost
+        ServerName site.template
+        DocumentRoot /var/www/site.template/public
+        ErrorLog /var/www/site.template/logs/error.log
+        CustomLog /var/www/site.template/logs/access.log combined
+
+        SSLEngine on
+        SSLCertificateKeyFile /var/www/site.template/ssl/private/site.template.key.pem
+        SSLCertificateFile /var/www/site.template/ssl/certs/site.template.cert.pem
+        SSLCertificateChainFile /vagrant/ssl/certs/ca.cert.pem
+</VirtualHost>
