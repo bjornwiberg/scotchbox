@@ -3,6 +3,7 @@
 
 load 'networkconfig/default'
 
+Dir.mkdir("./Sites") unless File.exists?("./Sites")
 Vagrant.configure("2") do |config|
 
     config.vm.box_version = "2.5"
