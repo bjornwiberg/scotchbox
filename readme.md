@@ -14,6 +14,16 @@ git clone https://github.com/bjornwiberg/scotchbox.git ~/scotch
 cd ~/scotch/
 vagrant up
 ```
+
+### Trust the root certificate for https usage on sites
+#### Mac
+```
+cd ~/scotch/ && sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain ssl/certs/ca.cert.pem
+```
+#### Other oses
+```
+install cert and trust in ```ssl/certs/certs/ca.cert.pem```
+```
 ### Install scripts for easy site creation
 source file into your config e.g. .zshrc
 ```
