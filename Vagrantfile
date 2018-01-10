@@ -15,6 +15,10 @@ Vagrant.configure("2") do |config|
 
     config.vm.provision "shell", run: "always", inline: <<-SHELL
 
+        if ! [ -f /vagrant/Domains ]; then
+            touch /vagrant/Domains
+        fi
+
         while IFS= read -r line; do
             if [ "$line" != "" ]; then
                 DOMAINS+=("$line")
