@@ -11,6 +11,11 @@
 ```
 git clone https://github.com/bjornwiberg/scotchbox.git ~/scotch
 ```
+### Uncompress database files
+```
+cd ~/scotch/
+tar -xzvf Databases.tar.gz
+```
 ### Start box
 ```
 cd ~/scotch/
