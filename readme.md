@@ -5,37 +5,43 @@
 
 * Support for both private and public networks via simple terminal command
 
-### To clone project
+* Https support on all sites via Root CA signed certificates inside box
+
+### Clone project
 ```
 git clone https://github.com/bjornwiberg/scotchbox.git ~/scotch
 ```
-### To start box
+### Start box
 ```
 cd ~/scotch/
 vagrant up
 ```
 
-### Trust the root certificate for https usage on sites
+### Trust the root certificate for https usage on sites (OPTIONAL)
 #### Mac
 ```
 cd ~/scotch/ && sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain ssl/certs/ca.cert.pem
 ```
 #### Other oses
-```
 install cert and trust in ```ssl/certs/certs/ca.cert.pem```
-```
-### Install scripts for easy site creation
+
+### Install scripts for easy site creation (OPTIONAL)
 source file into your config e.g. .zshrc
 ```
 echo "source ~/scotch/scotchfunctions" >> ~/.zshrc && source ~/.zshrc
 ```
 ### To add new sites to box
-use command newsite
-
-this command add hostname to Domains, add hostname to /etc/hosts and provision the box
+#### From scotch scripts (newsite)
 ```
 newsite hostname.local
 ```
+
+#### Manual method
+Add new line inside ```~/scotch/Domains``` with desired domainname e.g. ```domain.local```
+
+Edit ```/etc/hosts``` with new line e.g. ```192.168.33.10 domain.local```
+
+Run provision scripts for box using ```cd ~/scotch && vagrant provision```
 
 ### Set correct network adapter when running public network mode
 If your network adapter is not called Wi-Fi (AirPort) you need to make an extra step
