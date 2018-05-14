@@ -93,7 +93,7 @@ Vagrant.configure("2") do |config|
                     -new -sha256 -out /var/www/$DOMAIN/ssl/private/$DOMAIN.csr.pem \
                     -subj "/CN=$DOMAIN" \
                     > /dev/null 2>&1
-q
+
                 ## Self sign cert
                 openssl ca -batch \
                     -config <(echo "$openssl
